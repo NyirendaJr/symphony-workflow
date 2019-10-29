@@ -13,7 +13,7 @@ class CreateVideoStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('video_statuses', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->unique();
@@ -29,6 +29,6 @@ class CreateVideoStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_statuses');
+        Schema::dropIfExists('statuses');
     }
 }

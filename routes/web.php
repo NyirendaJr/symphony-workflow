@@ -12,7 +12,7 @@
 */
 
 use App\Helper\StatusMarker;
-use App\Video;
+use App\Order;
 use Symfony\Component\Workflow\DefinitionBuilder;
 use Symfony\Component\Workflow\Transition;
 use Symfony\Component\Workflow\Workflow;
@@ -31,11 +31,11 @@ Route::get('/', function () {
         ->addTransition(new Transition('publish', 'draft', 'published'))
         ->build();
 
-    $status = \App\VideoStatus::all();
+    $status = \App\Status::all();
     for ($x = 1; $x < count($status); $x++) {
-        $videoStatus = \App\VideoStatus::find($x);
+        $videoStatus = \App\Status::find($x);
         $workflow = new Workflow($definition, (new StatusMarker($videoStatus)));
-        $video = video::find(1);
+        $video = Order::find(1);
 
         //$workflow->setMarking($video);
         //$workflow->getMarking($video);

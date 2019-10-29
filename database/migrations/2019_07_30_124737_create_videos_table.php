@@ -13,13 +13,12 @@ class CreateVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('path')->nullable();
-            $table->unsignedInteger('video_statuses_id');
-            $table->foreign('video_statuses_id')->references('id')->on('video_statuses');
+            $table->unsignedInteger('status_id');
+            $table->foreign('status_id')->references('id')->on('statuses');
             $table->softDeletes();
             $table->timestamps();
         });

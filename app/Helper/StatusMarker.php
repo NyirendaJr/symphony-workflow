@@ -2,7 +2,7 @@
 
 
 namespace App\Helper;
-use App\VideoStatus;
+use App\Status;
 use Symfony\Component\Workflow\Marking;
 use Symfony\Component\Workflow\MarkingStore\MarkingStoreInterface;
 
@@ -11,7 +11,7 @@ class StatusMarker implements MarkingStoreInterface
 
     protected $videoStatus;
 
-    public function __construct(VideoStatus $videoStatus)
+    public function __construct(Status $videoStatus)
     {
         $this->videoStatus = $videoStatus;
     }
@@ -39,7 +39,7 @@ class StatusMarker implements MarkingStoreInterface
     public function setMarking($subject, Marking $marking)
     {
         // TODO: Implement setMarking() method.
-        $status = VideoStatus::where('slug', '=', key($marking->getPlaces()))
+        $status = Status::where('slug', '=', key($marking->getPlaces()))
             ->firstOrFail();
 
         $subject->status()->associate($status);

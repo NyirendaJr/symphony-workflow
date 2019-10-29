@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\VideoStatus;
+use App\Status;
 class VideoStatusesTableSeeder extends Seeder
 {
     /**
@@ -11,8 +11,8 @@ class VideoStatusesTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach (['new', 'uploading', 'uploaded','transcoded','draft', 'published'] as $slug){
-            VideoStatus::create([
+        foreach (['new', 'received', 'processing','processed'] as $slug){
+            Status::create([
                 'name' => ucfirst($slug),
                 'slug' => $slug
             ]);

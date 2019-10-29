@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\Workflow\DefinitionBuilder;
 use Symfony\Component\Workflow\Workflow;
 use Symfony\Component\Workflow\Transition;
-use App\Video;
+use App\Order;
 class TestController extends Controller
 {
     public function index()
@@ -25,7 +25,7 @@ class TestController extends Controller
 
         $workflow = new Workflow($definition, (new StatusMarker()));
 
-        $video = video::find(1);
+        $video = Order::find(1);
         $workflow->can($video, 'upload');
         $workflow->apply($video, 'upload');
 
